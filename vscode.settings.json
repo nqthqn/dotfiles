@@ -16,6 +16,5 @@
     "editor.formatOnPaste": true,
     "workbench.colorTheme": "Ayu Mirage",
     "editor.glyphMargin": false,
-    "git.autofetch": true,
-    "git.defaultCloneDirectory": "~/code",
+    "git.autofetch": true
 }
