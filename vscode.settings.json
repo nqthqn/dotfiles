@@ -1,11 +1,10 @@
 {
     "window.zoomLevel": 0,
     "editor.fontSize": 14,
-    "editor.lineHeight": 25,
+    "editor.lineHeight": 23,
     "editor.tabSize": 2,
     "editor.fontFamily": "Operator Mono Lig",
     "editor.fontLigatures": true,
-    "workbench.iconTheme": "vs-minimal",
     "elm-format.formatOnSave": true,
     "editor.minimap.enabled": false,
     "eslint.run": "onSave",
@@ -14,5 +13,6 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.snippetSuggestions": "top",
     "editor.formatOnPaste": true,
-    "workbench.colorTheme": "Ayu Mirage"
+    "workbench.colorTheme": "Ayu Mirage",
+    "editor.glyphMargin": false
 }
