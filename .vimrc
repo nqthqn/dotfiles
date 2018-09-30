@@ -21,6 +21,8 @@ Plug 'mattn/emmet-vim'
 Plug 'jacoborus/tender.vim'
 call plug#end()
 
+" Diable annoying audio bell
+set visualbell
 
 " Quick window motion mappings
 map <C-h> <C-w>h
