@@ -46,8 +46,7 @@ set number
 
 " i <3 pablo piocasso
 syntax enable
-colorscheme tender
-" colorscheme pablo
+colorscheme pablo
 "set bg=dark
 
 " ? I forget what this does
