@@ -15,6 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'elixir-lang/vim-elixir'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
+Plug 'udalov/kotlin-vim'
 " <c-y>, to expand -  ul>li*3
 Plug 'mattn/emmet-vim'
 " colorscheme
