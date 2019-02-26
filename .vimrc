@@ -1,9 +1,3 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.vim/plugged')
 Plug 'elmcast/elm-vim'
 Plug 'itchyny/lightline.vim'
@@ -18,8 +12,6 @@ Plug 'w0rp/ale'
 Plug 'udalov/kotlin-vim'
 " <c-y>, to expand -  ul>li*3
 Plug 'mattn/emmet-vim'
-" colorscheme
-Plug 'jacoborus/tender.vim'
 call plug#end()
 
 " Diable annoying audio bell
@@ -47,18 +39,20 @@ set number
 
 " i <3 pablo piocasso
 syntax enable
-colorscheme pablo
-"set bg=dark
+colorscheme peachpuff 
+" set bg=dark
 
 " ? I forget what this does
 set laststatus=2
 
 map <C-n> :NERDTreeToggle<CR>
 
+set relativenumber! 
+
 function! ToggleForCopy() 
     set list! 
     set number! 
-   " set relativenumber! 
+    set relativenumber! 
 endfunction 
 
 nmap <silent> \p :call ToggleForCopy()<CR>
