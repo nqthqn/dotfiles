@@ -5,6 +5,9 @@ alias g="git status"
 alias gco="git checkout"
 alias c="clear"
 alias bs="vim ~/.bash_profile && source ~/.bash_profile"
+alias vim="nvim"
+alias vi="nvim"
+alias sed="gsed"
 
 # Enviornmanet variables
 export GOBIN="/Users/nnichols/go/bin"
@@ -17,6 +20,16 @@ test -f ~/.fzf.bash && . $_
 
 # Jump around — Tracks your most used directories, based on 'frecency'.
 source ~/.bin/z.sh
+
+####### Since we are using z and fzf, share bash histories
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#######
 
 # Git completion
 test -f ~/git-completion.bash && . $_
@@ -108,4 +121,4 @@ bash_prompt
 # Trigger ~/.bashrc commands
 . ~/.bashrc
 export CLICOLOR=1
-export PATH="/usr/local/opt/nss/bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/opt/nss/bin:$PATH"
