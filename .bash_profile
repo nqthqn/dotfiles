@@ -5,9 +5,53 @@ alias g="git status"
 alias gco="git checkout"
 alias c="clear"
 alias bs="vim ~/.bash_profile && source ~/.bash_profile"
-alias vim="nvim"
-alias vi="nvim"
 alias sed="gsed"
+
+# Terraform
+alias tinit="terraform init"
+alias tapply="terraform apply"
+alias tplan="terraform plan"
+alias tstate="terraform state"
+
+alias fly="fly -t tutorial"
+
+HISTTIMEFORMAT='(%d/%m/%y %T) '
+
+function dlogin() {
+    echo "Performing docker login to account ${1}"
+    aws ecr get-login --no-include-email --profile $1 | bash
+}
+
+function dummyacc() {
+	curl 'http://localhost:7000/v1/user/profile' -H 'Accept: */*' -H 'Referer: http://localhost:4200/signup?signup_source=mozilla' -H 'Origin: http://localhost:4200' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36' -H 'Content-Type: application/json' --data-binary '{"email":"$(date +%s)@mailinator.com","source":"mozilla","first_name":"Nathan","last_name":"Nichols","password":"Fancy123","agreed_terms_service":true,"marketing_opt_in":false}' --compressed
+}
+
+
+function hours() {
+  for f in /Users/nnichols/code/csky/*; do
+    [[ ! -d $f/.git ]] && echo "" && continue
+    pushd $f > /dev/null
+    echo ""
+    echo "$(basename ${f})"
+    git --no-pager log --since=5.days --pretty="format:%cd: %s" \
+	--author="Nathan Nichols" --date="format:%a %I:%M %p" \
+	--reverse
+    popd > /dev/null
+    echo ""
+  done
+}
+
+function branchy() {
+  for b in $(git branch --format="%(refname)"); do 
+    echo ${b}
+    git rev-list --left-right --count master...${b}
+  done;
+}
+
+
+function matrix() {
+   echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
+}
 
 # Enviornmanet variables
 export GOBIN="/Users/nnichols/go/bin"
@@ -34,7 +78,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Git completion
 test -f ~/git-completion.bash && . $_
 
-export PATH="/usr/local/opt/ncurses/bin:$PATH:$GOBIN"
+export PATH="$HOME/.rbenv/shims:/usr/local/opt/ncurses/bin:$PATH:$GOBIN"
 #
 # Clean and minimalistic Bash prompt
 # Author: Artem Sapegin, sapegin.me
@@ -122,3 +166,9 @@ bash_prompt
 . ~/.bashrc
 export CLICOLOR=1
 export PATH="$HOME/.bin:/usr/local/opt/nss/bin:$PATH"
+
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
