@@ -1,15 +1,20 @@
 call plug#begin('~/.vim/plugged')
-Plug 'elmcast/elm-vim'
-Plug 'itchyny/lightline.vim'
+
+" Nice things
+" Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ervandew/supertab'
-Plug 'elixir-lang/vim-elixir'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
+
+" Language supprt
 Plug 'udalov/kotlin-vim'
+Plug 'elmcast/elm-vim'
+Plug 'elixir-lang/vim-elixir'
+
 " <c-y>, to expand -  ul>li*3
 Plug 'mattn/emmet-vim'
 call plug#end()
