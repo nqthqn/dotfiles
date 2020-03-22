@@ -61,7 +61,7 @@ fi
 if [[ "$UID" == 0 ]]; then
   sexy_bash_prompt_symbol="#"
 else
-  sexy_bash_prompt_symbol="↪"
+  sexy_bash_prompt_symbol=">"
 fi
 
 # Apply any color overrides that have been set in the environment
