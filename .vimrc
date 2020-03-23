@@ -30,6 +30,7 @@ nnoremap ,html :-1read ~/code/snips/skeleton.html<CR>
 
 " pretty
 set t_Co=256
+" https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 colorscheme molokai
 
 " 4 space tabs as spaces
