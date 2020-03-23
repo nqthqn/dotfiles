@@ -1,104 +1,51 @@
-call plug#begin('~/.vim/plugged')
+" basics
+set nocompatible                                " disable backward compatability with vi
+set backspace=indent,eol,start                  " make backspace work like normal
+syntax enable                                   " syntax highlighting 
+filetype plugin on                              " for netrw (file browser)
+set visualbell                                  " no audio bell
+set cursorline                                  " show the line
+highlight Visual cterm=reverse ctermbg=NONE
+set hlsearch                                    " highlight matches
+nnoremap ,<space> :nohlsearch<CR>               " toggle highlights
+set listchars=tab:▸\ ,eol:¬                     " for set list!
 
-" Nice things
-" Plug 'itchyny/lightline.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ervandew/supertab'
-Plug 'airblade/vim-gitgutter'
-Plug 'w0rp/ale'
 
-" Language supprt
-Plug 'udalov/kotlin-vim'
-Plug 'elmcast/elm-vim'
-Plug 'elixir-lang/vim-elixir'
+" tab completion for file tasks
+set wildmenu                                    " tab auto complete menu
+set path+=**                                    " look in subfolders
 
-" <c-y>, to expand -  ul>li*3
-Plug 'mattn/emmet-vim'
-call plug#end()
+" file browser
+let g:netrw_banner=0                            " disable annoying banner
+let g:netrw_browse_split=4                      " open in prior window
+let g:netrw_altv=1                              " opens split to the right
+let g:netrw_liststyle=3                         " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()    " hide files that are git ignored
+let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+'
 
-" Diable annoying audio bell
-set visualbell
+" buffers
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr> 
+
+" snippets
+nnoremap ,html :-1read ~/code/snips/skeleton.html<CR>
+
+" pretty
+set t_Co=256
+colorscheme molokai
+
+" 4 space tabs as spaces
+set shiftwidth=3
+set tabstop=3
+set expandtab
+
+" set number
 
 " Quick window motion mappings
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
-" display the line!
-set cursorline
-
-" too lazy to hit tab
-set smartindent
-
-" 4 space tabs as spaces
-set shiftwidth=4
-set tabstop=4
-set expandtab
-
-set number
-
-" i <3 pablo piocasso
-syntax enable
-colorscheme peachpuff 
-" set bg=dark
-
-" ? I forget what this does
-set laststatus=2
-
-map <C-n> :NERDTreeToggle<CR>
-
-set relativenumber! 
-
-function! ToggleForCopy() 
-    set list! 
-    set number! 
-    set relativenumber! 
-endfunction 
-
-nmap <silent> \p :call ToggleForCopy()<CR>
-
-set listchars=tab:▸\ ,eol:¬
-
-" toggle the paste mode
-set pastetoggle=<F2>
-
-" highlight searches
-" set hlsearch
-
-
-" auto format elm code on save
-let g:elm_format_autosave=1
-let g:elm_format_fail_silently=1
-
-" a pretty airline tabline for tabs and buffers
-let g:airline#extensions#tabline#enabled = 1
-" Sane Ignore For ctrlp
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$\|node_modules\|elm-stuff|',
-  \ 'file': '\.exe$\|\.so$\|\.dat$'
-  \ }
-
-" Default arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-
-set backspace=indent,eol,start
-
-" use dots
-let g:gitgutter_sign_added = '·'
-let g:gitgutter_sign_modified = '·'
-let g:gitgutter_sign_removed = '·'
-let g:gitgutter_sign_removed_first_line = '·'
-let g:gitgutter_sign_modified_removed = '·'
-
-" ALE linter settings
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
-let g:airline#extensions#ale#enabled = 1
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
