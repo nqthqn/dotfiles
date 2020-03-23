@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/AlecAivazis/survey/v2"
+    "os"
 	"os/exec"
 	"strings"
 )
@@ -13,29 +14,31 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	qs := []*survey.Question{
-		{
-			Name: "session",
-			Prompt: &survey.Select{
-				Message: "Session:",
-				Options: strings.Split(string(ss), "\n"),
-				Default: "0",
-			},
-		},
-	}
+    opts := []string{}
+    for _, o := range strings.Split(strings.TrimSuffix(string(ss), "\n"), "\n") {
+        opts = append(opts, strings.Trim(o, "\""))
+    }
 
 	// Prompt user to select a tmux session
-	answers := struct {
-		Session string `survey:"session"`
-	}{}
-	err = survey.Ask(qs, &answers)
+	prompt := &survey.Select{
+		Message: "attach tmux session:",
+		Options: opts,
+		Default: "0",
+	}
+    sess := ""
+	err = survey.AskOne(prompt, &sess)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	// Connect to session
-	err = exec.Command("tmux", "attach", "-t", answers.Session).Run()
+    // Connect to selected session
+	cmd := exec.Command("tmux", "attach", "-t", sess)
+    cmd.Stdin = os.Stdin
+    cmd.Stdout = os.Stdout
+    cmd.Stderr = os.Stderr
+    err = cmd.Run()
+    fmt.Println(cmd.String())
 	if err != nil {
 		fmt.Println(err)
 	}
