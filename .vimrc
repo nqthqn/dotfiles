@@ -46,6 +46,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" enable mouse mode
+set mouse=a
+
 " Use line cursor and cursorline in INSERT mode
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode
 if exists('$TMUX')
