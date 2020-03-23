@@ -3,13 +3,10 @@ set nocompatible                                " disable backward compatability
 set backspace=indent,eol,start                  " make backspace work like normal
 syntax enable                                   " syntax highlighting 
 filetype plugin on                              " for netrw (file browser)
-set visualbell                                  " no audio bell
 set cursorline                                  " show the line
-highlight Visual cterm=reverse ctermbg=NONE
 set hlsearch                                    " highlight matches
 nnoremap ,<space> :nohlsearch<CR>               " toggle highlights
 set listchars=tab:▸\ ,eol:¬                     " for set list!
-
 
 " tab completion for file tasks
 set wildmenu                                    " tab auto complete menu
@@ -36,8 +33,8 @@ set t_Co=256
 colorscheme molokai
 
 " 4 space tabs as spaces
-set shiftwidth=3
-set tabstop=3
+set shiftwidth=4
+set tabstop=4
 set expandtab
 
 " set number
