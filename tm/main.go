@@ -1,18 +1,18 @@
 package main
 
 import (
-	"os/exec"
 	"fmt"
 	"github.com/AlecAivazis/survey/v2"
+	"os/exec"
 	"strings"
 )
 
 func main() {
 	// Build list of tmux sessions
 	ss, err := exec.Command("tmux", "ls", "-F", "\"#S\"").Output()
-    if err != nil {
-        fmt.Println(err)
-    }
+	if err != nil {
+		fmt.Println(err)
+	}
 	qs := []*survey.Question{
 		{
 			Name: "session",
@@ -24,7 +24,7 @@ func main() {
 		},
 	}
 
-    // Prompt user to select a tmux session
+	// Prompt user to select a tmux session
 	answers := struct {
 		Session string `survey:"session"`
 	}{}
@@ -35,8 +35,8 @@ func main() {
 	}
 
 	// Connect to session
-    err = exec.Command("tmux", "attach", "-t", answers.Session).Run()
-    if err != nil {
-        fmt.Println(err)
-    }
+	err = exec.Command("tmux", "attach", "-t", answers.Session).Run()
+	if err != nil {
+		fmt.Println(err)
+	}
 }
