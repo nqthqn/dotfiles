@@ -28,10 +28,16 @@ map gp :bp<cr>
 map gd :bd<cr> 
 
 " snippets
-nnoremap ,html :-1read ~/code/snips/skeleton.html<CR>
+nnoremap ,html :-1read ~/code/snips/skeleton.html<cr>
+ 
+" get out of insert mode faster
+set ttimeout
+set ttimeoutlen=100
+set timeoutlen=3000
 
 " pretty
 set t_Co=256
+
 " https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 colorscheme molokai
 
