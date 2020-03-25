@@ -11,6 +11,9 @@ set listchars=tab:▸\ ,eol:¬                     " for set list!
 set wildmenu                                    " tab auto complete menu
 set path+=**                                    " look in subfolders
 
+" ignore things when autocompleting
+set wildignore+=**/node_modules/** 
+
 " file browser
 let g:netrw_banner=0                            " disable annoying banner
 let g:netrw_browse_split=4                      " open in prior window
