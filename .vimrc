@@ -46,7 +46,9 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
-" set number
+" hybrid line numbers
+" https://jeffkreeftmeijer.com/vim-number/
+set number relativenumber
 
 " Quick window motion mappings
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
