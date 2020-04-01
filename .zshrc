@@ -4,7 +4,7 @@ ZSH_THEME="avit"
 plugins=( git fzf )
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR='nvim'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias g="git status"
 alias c="clear"
