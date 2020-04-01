@@ -1,0 +1,38 @@
+# Great initial mac os preferences
+# https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+
+defaults write com.apple.dock mineffect -string "scale"
+defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock mru-spaces -bool false
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool false
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool false
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.dashboard mcx-disabled -bool true
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock showhidden -bool true
+defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+for app in "Dock" "Finder"; do
+  killall "${app}" > /dev/null 2>&1
+done
+echo "Reboot for some settings to take effect"
