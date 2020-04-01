@@ -1,8 +1,8 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'phanviet/vim-monokai-pro'
 Plug 'airblade/vim-gitgutter'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mattn/emmet-vim'
@@ -74,10 +74,8 @@ set ttimeoutlen=100
 set timeoutlen=3000
 
 " pretty
-set t_Co=256
-
-set termguicolors
-colorscheme monokai_pro
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 
 " 4 space tabs as spaces
 set shiftwidth=4
