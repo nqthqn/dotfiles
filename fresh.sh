@@ -12,3 +12,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 # Use pure prompt
 npm install --global pure-prompt
+
+# use iosevka font
+brew tap homebrew/cask-fonts && brew cask install font-iosevka && brew cask install font-iosevka-slab
+

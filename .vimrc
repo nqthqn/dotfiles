@@ -83,7 +83,6 @@ set ttimeout
 set ttimeoutlen=100
 set timeoutlen=3000
 
-
 " 4 space tabs as spaces
 set shiftwidth=4
 set tabstop=4
