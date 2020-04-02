@@ -1,7 +1,7 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'phanviet/vim-monokai-pro'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
@@ -10,7 +10,14 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'takac/vim-hardtime'
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
+
+" pretty
+" set t_Co=256
+set termguicolors
+set background=dark
+colorscheme palenight
 
 " Use hard time!
 let g:hardtime_default_on = 1
@@ -18,6 +25,8 @@ let g:hardtime_showmsg = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 4
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+" enable mouse mode (do not want vim to be too hard)
+set mouse=a
 
 " basics
 set noerrorbells                                " disable audio bell
@@ -50,7 +59,8 @@ set wildignore+=**/node_modules/**
 
 " file browser
 let g:netrw_banner=0                            " disable annoying banner
-let g:netrw_browse_split=4                      " open in prior window
+let g:netrw_browse_split=2
+let g:netrw_winsize=25
 let g:netrw_altv=1                              " opens split to the right
 let g:netrw_liststyle=3                         " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()    " hide files that are git ignored
@@ -73,11 +83,6 @@ set ttimeout
 set ttimeoutlen=100
 set timeoutlen=3000
 
-" pretty
-set t_Co=256
-
-set termguicolors
-colorscheme monokai_pro
 
 " 4 space tabs as spaces
 set shiftwidth=4
@@ -95,8 +100,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" enable mouse mode
-set mouse=a
 
 " Use line cursor and cursorline in INSERT mode
 " https://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode
@@ -126,13 +129,20 @@ if executable('rg')
     let g:ctrlp_use_caching = 0
 endif
 
-" better git gutter colors
-let g:gitgutter_override_sign_column_highlight = 0
-highlight clear SignColumn
-highlight GitGutterAdd ctermfg=2
-highlight GitGutterChange ctermfg=3
-highlight GitGutterDelete ctermfg=1
-highlight GitGutterChangeDelete ctermfg=4
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ ]
+
+" rename
+nmap <F2> <Plug>(coc-rename)
+
+" Remap for format selected region
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " autoformat file
 nmap <leader>i mmgg=G`m
