@@ -11,6 +11,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'takac/vim-hardtime'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'elm-tooling/elm-vim'
+Plug 'andys8/vim-elm-syntax'
 call plug#end()
 
 " pretty
