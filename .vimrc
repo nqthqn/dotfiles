@@ -152,3 +152,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>i mmgg=G`m
 
 let g:elm_format_autosave = 1
+
+" Disabled arrow keys in normal mode
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
