@@ -4,6 +4,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
@@ -14,14 +15,18 @@ Plug 'drewtempelmeyer/palenight.vim'
 " Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
 Plug 'ElmCast/elm-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+map <C-n> :NERDTreeToggle<CR>
 
 " pretty
 " set t_Co=256
 set termguicolors
 set background=dark
 colorscheme palenight
-
+let mapleader=" "
 " set mouse=a
 
 " basics
@@ -125,13 +130,13 @@ if executable('rg')
 endif
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ ]
+            \ 'coc-snippets',
+            \ 'coc-pairs',
+            \ 'coc-tsserver',
+            \ 'coc-eslint', 
+            \ 'coc-prettier', 
+            \ 'coc-json', 
+            \ ]
 
 " rename
 nmap <F2> <Plug>(coc-rename)
