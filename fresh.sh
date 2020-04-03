@@ -2,7 +2,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Install GUI apps
-brew cask install google-chrome slack skype vlc numi zoomus iterm2 transmission protonvpn rectangle firefox kap homebrew/cask-versions/docker-edge
+brew cask install google-chrome clipy slack skype vlc numi zoomus iterm2 transmission protonvpn rectangle firefox kap homebrew/cask-versions/docker-edge
 
 # Install CLI apps
 brew install tmux nvim fzf node
