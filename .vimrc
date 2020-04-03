@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
@@ -11,7 +12,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
-Plug 'drewtempelmeyer/palenight.vim'
 " Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
 Plug 'ElmCast/elm-vim'
@@ -25,8 +25,8 @@ map <C-n> :NERDTreeToggle<CR>
 " set t_Co=256
 set termguicolors
 set background=dark
-colorscheme palenight
 let mapleader=" "
+colorscheme gruvbox
 " set mouse=a
 
 " basics
@@ -36,7 +36,7 @@ set backspace=indent,eol,start                  " make backspace work like norma
 syntax enable                                   " syntax highlighting 
 filetype plugin on                              " for netrw (file browser)
 set hlsearch                                    " highlight matches
-nnoremap ,<space> :nohlsearch<CR>               " toggle highlights
+nnoremap ,<space> :nohlsearch<CR>
 set listchars=tab:▸\ ,eol:¬                     " for set list!
 set colorcolumn=80
 set smartindent
