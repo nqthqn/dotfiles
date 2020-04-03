@@ -50,6 +50,10 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+" more natural splitting
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+set splitbelow
+set splitright
 
 " tab completion for file tasks
 set wildmenu                                    " tab auto complete menu
