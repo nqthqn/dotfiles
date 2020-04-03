@@ -28,7 +28,7 @@ let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 4
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 " enable mouse mode (do not want vim to be too hard)
-set mouse=a
+" set mouse=a
 
 " basics
 set noerrorbells                                " disable audio bell
