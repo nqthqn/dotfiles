@@ -7,12 +7,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
-Plug 'takac/vim-hardtime'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'elm-tooling/elm-vim'
+" Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
+Plug 'ElmCast/elm-vim'
 call plug#end()
 
 " pretty
@@ -21,13 +22,6 @@ set termguicolors
 set background=dark
 colorscheme palenight
 
-" Use hard time!
-let g:hardtime_default_on = 1
-let g:hardtime_showmsg = 1
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 4
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-" enable mouse mode (do not want vim to be too hard)
 set mouse=a
 
 " basics
@@ -147,3 +141,5 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " autoformat file
 nmap <leader>i mmgg=G`m
+
+let g:elm_format_autosave = 1
