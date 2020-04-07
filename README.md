@@ -9,6 +9,11 @@ I am documenting the motions I am learning in Vim. Disabling the mouse and the a
 ### Mon Apr  6 2020
  - `:%g!/^(/d` across the whole file (`%`) run a command (`g`) on any line that does not (`!`) start with `(` (`g!/^(`) — in this case the command is delete (`d`)
  - `:%s/foo/bar/gc` substitute foo for bar across the whole line, prompt for confirmation
+ - `r` replace character
+ - `J` join line(s), work with visual selection. 
+ - `^w v` to split vertically
+ - `:registers` list what you have copied
+ - `"ayiw` into register a, yank inner word
 
 ### Sun Apr  5 2020
  - `I` to insert at start of line, `A` to insert at end of line
