@@ -14,6 +14,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
+Plug 'junegunn/vim-peekaboo'
 " Plug 'ElmCast/elm-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
