@@ -4,7 +4,13 @@
  - `<prefix>!` break pane to new window, helpful if window is getting crowded
 
 ## `vim`
+Vim's interface is a programming language made up of movements (`w` `e` `b` `h` `j` `k` `l`), edits (`c`), counts and modifiers (`i` inside, `a` around). [video](https://www.youtube.com/watch?v=a6Q8Na575qc)
 I am documenting the motions I am learning in Vim. Disabling the mouse and the arrow keys really helps me learn.
+
+### Wed Apr  8 2020
+ - `qa` quit all windows
+ - `fc` find the first c in a line (variants: `FtT`)
+ - `ysiw"` surround word in "quotes", `cs'"` change surrounding `'` to `"` 'like'
 
 ### Mon Apr  6 2020
  - `:%g!/^(/d` across the whole file (`%`) run a command (`g`) on any line that does not (`!`) start with `(` (`g!/^(`) — in this case the command is delete (`d`)

@@ -29,7 +29,7 @@ set background=dark
 let mapleader=" "
 let g:gruvbox_italic=1
 colorscheme gruvbox
-" set mouse=a
+set mouse=a
 
 " basics
 set noerrorbells                                " disable audio bell
