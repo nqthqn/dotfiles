@@ -1,45 +1,64 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
+" lang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
-Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdtree'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
+" feel
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'tpope/vim-repeat'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'ElmCast/elm-vim'
+Plug 'junegunn/goyo.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" look
+Plug 'vim-airline/vim-airline'
+Plug 'dunstontc/vim-vscode-theme'
+Plug 'junegunn/vim-xmark', { 'do': 'make' } " :Xmark to open markdown preview in browser
+
 call plug#end()
 
+" use space as my leader
+let mapleader=" "
+
+" Nerd tree
 map <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
+nmap <leader>m :NERDTreeToggle<CR>
+
+" fzf settings
+map <c-p> :Files<cr>
+map <c-b> :Buffers<cr>
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
 
 " pretty
-" set t_Co=256
 set termguicolors
-set background=dark
-let mapleader=" "
-let g:gruvbox_italic=1
-colorscheme gruvbox
+colorscheme dark_plus
+let g:airline_theme = 'dark_plus'
+
+" easy mode
 set mouse=a
 
 " basics
 set noerrorbells                                " disable audio bell
 set nocompatible                                " disable backward compatability with vi
 set backspace=indent,eol,start                  " make backspace work like normal
-syntax enable                                   " syntax highlighting 
+syntax enable                                   " syntax highlighting
 filetype plugin on                              " for netrw (file browser)
 set hlsearch                                    " highlight matches
 nnoremap ,<space> :nohlsearch<CR>
-set listchars=tab:▸\ ,eol:¬                     " for set list!
+set showbreak=↪\
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set colorcolumn=80
 set smartindent
 set tabstop=4 softtabstop=4
@@ -57,13 +76,12 @@ set undofile
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
 set splitbelow
 set splitright
-
 " tab completion for file tasks
 set wildmenu                                    " tab auto complete menu
 set path+=**                                    " look in subfolders
 
 " ignore things when autocompleting
-set wildignore+=**/node_modules/** 
+set wildignore+=**/node_modules/**
 
 " file browser
 let g:netrw_banner=0                            " disable annoying banner
@@ -122,9 +140,9 @@ autocmd InsertLeave * set nocul
 " make search matches more subtle
 highlight Search ctermbg=black ctermfg=yellow term=underline
 
-" Sane Ignore For ctrlp 
+" Sane Ignore For ctrlp
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$\|node_modules\|elm-stuff\|dist|', 
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$\|node_modules\|elm-stuff\|dist|',
             \ 'file': '\.exe$\|\.so$\|\.dat$'
             \ }
 
@@ -139,9 +157,9 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-pairs',
             \ 'coc-tsserver',
-            \ 'coc-eslint', 
-            \ 'coc-prettier', 
-            \ 'coc-json', 
+            \ 'coc-eslint',
+            \ 'coc-prettier',
+            \ 'coc-json',
             \ ]
 
 " rename
@@ -163,9 +181,6 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 set nowrap
 
-" Nerd tree
-nmap <leader>n :NERDTreeFind<CR>
-nmap <leader>m :NERDTreeToggle<CR>
 
 
 " CoC Recomended Settings
