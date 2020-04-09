@@ -39,6 +39,8 @@ map <c-p> :Files<cr>
 map <c-b> :Buffers<cr>
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" use bat
+" https://github.com/junegunn/fzf.vim/pull/707
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat -p --color always {}']}, <bang>0)
 
