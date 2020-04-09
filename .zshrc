@@ -12,6 +12,7 @@ alias gcob='git checkout $(git branch | fzf)'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias z='vim ~/.zshrc && source ~/.zshrc'
 alias v="vim ~/.vimrc"
+alias t="vim ~/.tmux.conf"
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
