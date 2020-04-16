@@ -14,6 +14,9 @@ alias z='vim ~/.zshrc && source ~/.zshrc'
 alias v="vim ~/.vimrc"
 alias t="vim ~/.tmux.conf"
 
+alias tplan="terraform plan"
+alias tapply="terraform apply"
+
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi

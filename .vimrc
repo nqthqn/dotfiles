@@ -6,6 +6,9 @@ Plug 'mattn/emmet-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'elm-tooling/elm-vim'
 Plug 'andys8/vim-elm-syntax'
+Plug 'vim-scripts/groovy.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-scripts/CSSMinister'
 " feel
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
@@ -25,6 +28,8 @@ Plug 'dunstontc/vim-vscode-theme'
 Plug 'junegunn/vim-xmark', { 'do': 'make' } " :Xmark to open markdown preview in browser
 
 call plug#end()
+
+au BufNewFile,BufRead *.jenkinsfile  setf groovy
 
 " use space as my leader
 let mapleader=" "
@@ -169,6 +174,7 @@ let g:coc_global_extensions = [
 
 " rename
 nmap <F2> <Plug>(coc-rename)
+nmap <F3> :set number! relativenumber!<cr>:GitGutterToggle<cr>
 
 " Remap for format selected region
 nmap <leader>f  <Plug>(coc-format-selected)
