@@ -7,6 +7,10 @@
 Vim's interface is a programming language made up of movements (`w` `e` `b` `h` `j` `k` `l`), edits (`c`), counts and modifiers (`i` inside, `a` around). [video](https://www.youtube.com/watch?v=a6Q8Na575qc)
 I am documenting the motions I am learning in Vim. Disabling the mouse and the arrow keys really helps me learn.
 
+### ??
+ - `gf` go into file
+ - `^o` go back, `^i` go forward, `:jumps`
+
 ### Wed Apr  8 2020
  - `qa` quit all windows
  - `fc` find the first c in a line (variants: `FtT`)
