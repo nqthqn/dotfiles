@@ -8,6 +8,7 @@ Vim's interface is a programming language made up of movements (`w` `e` `b` `h` 
 I am documenting the motions I am learning in Vim. Disabling the mouse and the arrow keys really helps me learn.
 
 ### ??
+ - Edit a macro: `"qp` then edit, then `V"qy` to update it.
  - `gf` go into file
  - `^o` go back, `^i` go forward, `:jumps`
 
