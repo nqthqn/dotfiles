@@ -1,4 +1,3 @@
-export PATH=$HOME/.bin:/usr/local/bin:$PATH
 export ZSH=/Users/nnichols/.oh-my-zsh
 ZSH_THEME="avit"
 plugins=( git fzf )
@@ -6,6 +5,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# aliases
 alias g="git status"
 alias c="clear"
 alias gcob='git checkout $(git branch | fzf)'
@@ -13,7 +14,7 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias z='vim ~/.zshrc && source ~/.zshrc'
 alias v="vim ~/.vimrc"
 alias t="vim ~/.tmux.conf"
-
+alias b="vim ~/go/src/github.com/nqthqn/brain/.brain"
 alias tplan="terraform plan"
 alias tapply="terraform apply"
 
@@ -55,6 +56,8 @@ function branchy() {
 function matrix() {
    echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
 }
+
+
 # Node version management
 #
 export NVM_DIR="$HOME/.nvm"
@@ -72,4 +75,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # pure
 autoload -U promptinit; promptinit
 prompt pure
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$HOME/go/bin:$PATH"
