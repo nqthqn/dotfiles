@@ -11,6 +11,7 @@ Plug 'vim-scripts/CSSMinister'
 Plug 'tpope/vim-commentary'
 " feel
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'tpope/vim-repeat'
@@ -19,17 +20,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/goyo.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " look
+Plug 'blerins/flattown'
+Plug 'plasticboy/vim-markdown'
 Plug 'rbong/vim-crystalline'
 Plug 'dunstontc/vim-vscode-theme'
-Plug 'junegunn/vim-xmark', { 'do': 'make' } " :Xmark to open markdown preview in browser
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
-au BufNewFile,BufRead jenkins  setf groovy
+au BufNewFile,BufRead *jenkins*,Jenkinsfile  setf groovy
+
+let g:user_emmet_next_key = '<Tab>'
+let g:user_emmet_prev_key = '<S-Tab>'
 
 " use space as my leader
 let mapleader=" "
@@ -59,30 +64,29 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat -p --color always {}']}, <bang>0)
 
-
 " pretty
 set termguicolors
-colorscheme dark_plus
+colorscheme flattown
 
 " easy mode
 set mouse=a
 
 " basics
-set noerrorbells                                " disable audio bell
-set nocompatible                                " disable backward compatability with vi
-set backspace=indent,eol,start                  " make backspace work like normal
-syntax enable                                   " syntax highlighting
-filetype plugin on                              " for netrw (file browser)
-set hlsearch                                    " highlight matches
+set noerrorbells                  " disable audio bell
+set nocompatible                  " disable backward compatability with vi
+set backspace=indent,eol,start    " make backspace work like normal
+syntax enable                     " syntax highlighting
+filetype plugin on                " for netrw (file browser)
+set hlsearch                      " highlight matches
 nnoremap ,<space> :nohlsearch<CR>
 set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-" set colorcolumn=80
+set colorcolumn=80
 set smartindent
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
-set clipboard=unnamed " use system clipboard
+set clipboard=unnamed             " use system clipboard
 highlight Search guibg=black guifg=yellow gui=underline
 
 " get rid of anoying swp files
@@ -97,19 +101,19 @@ set undofile
 set splitbelow
 set splitright
 " tab completion for file tasks
-set wildmenu                                    " tab auto complete menu
-set path+=**                                    " look in subfolders
+set wildmenu                                " tab auto complete menu
+set path+=**                                " look in subfolders
 
 " ignore things when autocompleting
 set wildignore+=**/node_modules/**
 
 " file browser
-let g:netrw_banner=0                            " disable annoying banner
+let g:netrw_banner=0                         " disable annoying banner
 let g:netrw_browse_split=2
 let g:netrw_winsize=25
-let g:netrw_altv=1                              " opens split to the right
-let g:netrw_liststyle=3                         " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()    " hide files that are git ignored
+let g:netrw_altv=1                           " opens split to the right
+let g:netrw_liststyle=3                      " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide() " hide files that are git ignored
 let g:netrw_list_hide.=',\(^\|\s\s)\zs\.\S\+'
 
 " nicer typing
@@ -183,7 +187,7 @@ let g:coc_global_extensions = [
 
 " rename
 nmap <F2> <Plug>(coc-rename)
-nmap <F3> :set number! relativenumber!<cr>:GitGutterToggle<cr>
+nmap <F3> :set relativenumber!<cr>:GitGutterToggle<cr>
 
 " Remap for format selected region
 " nmap <leader>f  <Plug>(coc-format-selected)
@@ -339,13 +343,25 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" jump back and for with C-o and C-l
+" https://github.com/neoclide/coc.nvim/issues/1089#issuecomment-589617614
+nnoremap <C-l> <C-i>
+
 nnoremap <silent> <leader>f  :Rg<cr>
 
 " status line
 function! StatusLine(...)
     return crystalline#mode() . ' %f%h%w%m%r '
 endfunction
+
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_theme = 'default'
 set laststatus=2
 
+
+" Markdown
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+
+
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE

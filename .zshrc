@@ -15,6 +15,7 @@ alias z='vim ~/.zshrc && source ~/.zshrc'
 alias v="vim ~/.vimrc"
 alias t="vim ~/.tmux.conf"
 alias b="vim ~/go/src/github.com/nqthqn/brain/.brain"
+alias n="vim ~/code/csky/todo"
 alias tplan="terraform plan"
 alias tapply="terraform apply"
 
