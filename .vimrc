@@ -9,6 +9,8 @@ Plug 'vim-scripts/groovy.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/CSSMinister'
 Plug 'tpope/vim-commentary'
+" Indentation
+Plug 'Raimondi/YAIFA'
 " feel
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
@@ -31,13 +33,36 @@ Plug 'cespare/vim-toml'
 
 call plug#end()
 
-au BufNewFile,BufRead *jenkins*,Jenkinsfile  setf groovy
-
-let g:user_emmet_next_key = '<Tab>'
-let g:user_emmet_prev_key = '<S-Tab>'
-
 " use space as my leader
 let mapleader=" "
+
+au BufNewFile,BufRead *jenkins*,Jenkinsfile  setf groovy
+
+" TODO: fix emmet tab stops
+
+" Markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+nnoremap <C-g> :Goyo<CR>
+autocmd FileType markdown Goyo
+autocmd FileType markdown setlocal spell spelllang=en_gb
+" [s to search for misspelled words above the cursor
+" ]s to search for misspelled words below the cursor
+" z= to see replacement suggestions
+" zg to add the word to your dictionary 
+autocmd FileType markdown set cursorline
+autocmd FileType markdown set conceallevel=2
+let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_edit_url_in = 'tab'
+let g:vim_markdown_follow_anchor = 1
+
+" keep cursor near middle when scrolling
+set scrolloff=12
 
 " Nerd tree
 map <C-n> :NERDTreeToggle<CR>
@@ -52,7 +77,7 @@ nnoremap <Leader>d :Gdiff<CR>
 nmap <leader>v <C-w>v:e ~/.vimrc<cr>
 
 " fzf settings
-nmap <leader>o :Files<cr>
+nmap <leader>o :GFiles!<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>l :Lines<cr>
 nmap <leader>c :Commits<cr>
@@ -66,7 +91,7 @@ command! -bang -nargs=? -complete=dir Files
 
 " pretty
 set termguicolors
-colorscheme flattown
+colorscheme dark_plus
 
 " easy mode
 set mouse=a
@@ -78,10 +103,10 @@ set backspace=indent,eol,start    " make backspace work like normal
 syntax enable                     " syntax highlighting
 filetype plugin on                " for netrw (file browser)
 set hlsearch                      " highlight matches
-nnoremap ,<space> :nohlsearch<CR>
+nnoremap ,<space> :nohlsearch<cr> " clear highlight
 set showbreak=↪\
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-set colorcolumn=80
+" set colorcolumn=80
 set smartindent
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -124,7 +149,7 @@ map gn :bn<cr>
 map gp :bp<cr>
 
 " snippets
-nnoremap ,html :-1read ~/code/snips/skeleton.html<cr>
+" TODO: consider using a plugin. emmet works for html
 nnoremap ,ico :-1read ~/code/snips/icon.html<cr>f_a
 
 " get out of insert mode faster
@@ -140,6 +165,7 @@ set expandtab
 " hybrid line numbers
 " https://jeffkreeftmeijer.com/vim-number/
 set number relativenumber
+nmap <F3> :set relativenumber!<cr>
 
 " Quick window motion mappings
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
@@ -169,7 +195,7 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\.exe$\|\.so$\|\.dat$'
             \ }
 
-" Use rip grp for ctrlp
+" Use rip grep for ctrlp
 if executable('rg')
     set grepprg=rg\ --color=never
     let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -178,8 +204,8 @@ endif
 
 let g:coc_global_extensions = [
             \ 'coc-snippets',
-            \ 'coc-pairs',
             \ 'coc-tsserver',
+            \ 'coc-emmet',
             \ 'coc-eslint',
             \ 'coc-prettier',
             \ 'coc-json',
@@ -187,7 +213,6 @@ let g:coc_global_extensions = [
 
 " rename
 nmap <F2> <Plug>(coc-rename)
-nmap <F3> :set relativenumber!<cr>:GitGutterToggle<cr>
 
 " Remap for format selected region
 " nmap <leader>f  <Plug>(coc-format-selected)
@@ -363,5 +388,3 @@ set laststatus=2
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_frontmatter = 1
 
-
-" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE

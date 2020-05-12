@@ -1,5 +1,5 @@
 export ZSH=/Users/nnichols/.oh-my-zsh
-ZSH_THEME="avit"
+ZSH_THEME=""
 plugins=( git fzf )
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
@@ -75,5 +75,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # pure
 autoload -U promptinit; promptinit
+
+PURE_CMD_MAX_EXEC_TIME=1000000000
+zstyle ':prompt:pure:prompt:*' color cyan
+zstyle :prompt:pure:git:stash show yes
+zstyle :prompt:pure:path color white
+
 prompt pure
+
+
+export PATH=$PATH:/usr/local/mysql/bin
 export PATH="/usr/local/sbin:$HOME/go/bin:$PATH"
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
