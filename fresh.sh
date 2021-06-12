@@ -2,7 +2,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Install GUI apps
-brew cask install google-chrome clipy slack skype vlc zoomus iterm2 transmission protonvpn rectangle firefox kap homebrew/cask-versions/docker-edge
+brew install --cask google-chrome clipy slack skype vlc zoomus iterm2 transmission protonvpn rectangle firefox kap homebrew/cask-versions/docker-edge
 
 # Install CLI apps
 brew install tmux nvim fzf node bat fd
@@ -14,4 +14,4 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 npm install --global pure-prompt
 
 # use iosevka font
-brew tap homebrew/cask-fonts && brew cask install font-iosevka && brew cask install font-iosevka-slab
+brew tap homebrew/cask-fonts && brew install --cask font-iosevka font-iosevka-slab
