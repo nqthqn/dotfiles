@@ -1,0 +1,44 @@
+# .config/helix/config.toml
+theme = "everforest_dark" # bg = #2d363b
+
+[editor] 
+idle-timeout = 200 # faster auto complete
+# color-modes = true # switch the bar for modes
+line-number = "relative"
+# gutters = [] 
+gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+undercurl = false
+true-color = true
+# rulers = [120]
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["spinner", "mode", "file-name"]
+center = ["version-control"]
+right = ["diagnostics", "spacer", "position-percentage", "file-type"]
+
+separator = "│"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+# Instead of ESC, tap jk to get back to normal mode
+[keys.insert]
+j = { k = "normal_mode"}
+
+[keys.normal]
+g = { a = "code_action" }
+
+[editor.lsp]
+goto-reference-include-declaration = false # change default, use gd
+# display-inlay-hints = true # lsp config required, also janky
+# put lsp messages under status line
+# display-messages = true 
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+# https://docs.helix-editor.com/keymap.html#select--extend-mode
+
